@@ -6,9 +6,11 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.guitar.db.model.Manufacturer;
+
 
 @Repository
 public class ManufacturerRepository {
@@ -16,7 +18,7 @@ public class ManufacturerRepository {
 	private EntityManager entityManager;
 
 	
-	@PersistenceContext
+	@Autowired
 	private ManufacturerJpaRepository manufacturerJpaRepository;
 
 	
