@@ -99,6 +99,13 @@ public class LocationPersistenceTests {
 		List<Location> locs = locationJpaRepository.findByStateLike("New%"); // Query DSL
 		assertEquals(4, locs.size());
 	}
+	
+	@Test
+	public void testFindWithNotLike() throws Exception {
+		List<Location> locs = locationJpaRepository.findByStateNotLike("New%"); // Query DSL
+		assertNotSame(46, locs.size());
+	}
+	
 
 	@Test
 	@Transactional  //note this is needed because we will get a lazy load exception unless we are in a tx
