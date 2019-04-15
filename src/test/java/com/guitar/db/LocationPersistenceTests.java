@@ -2,7 +2,7 @@ package com.guitar.db;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
-
+import static org.junit.Assert.assertNotSame;
 
 import java.util.List;
 
@@ -33,6 +33,21 @@ public class LocationPersistenceTests {
 	private EntityManager entityManager;
 	
 	
+	@Test
+	public void testJpaFindByStateIsOrCountryEquals() {
+		List<Location> locations = locationJpaRepository.findByStateIsOrCountryEquals("Utah", "Utah");
+		
+		assertNotNull(locations);
+		assertEquals("Utah", locations.get(0).getState());
+	}
+	
+	@Test
+	public void testJpaFindByStateNot() {
+		List<Location> locations = locationJpaRepository.findByStateNot("Utah");
+		
+		assertNotNull(locations);
+		assertNotSame("Utah", locations.get(0).getState());
+	}
 	
 	@Test
 	public void testJpaFindByStateAndCountry() {
