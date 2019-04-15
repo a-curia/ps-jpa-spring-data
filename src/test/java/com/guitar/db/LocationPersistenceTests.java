@@ -33,6 +33,23 @@ public class LocationPersistenceTests {
 	private EntityManager entityManager;
 	
 	
+	
+	@Test
+	public void testJpaFindByStateAndCountry() {
+		List<Location> locations = locationJpaRepository.findByStateAndCountry("Utah", "United States");
+		
+		assertNotNull(locations);
+		assertEquals("Utah", locations.get(0).getState());
+	}
+
+	@Test
+	public void testJpaFindByStateOrCountry() {
+		List<Location> locations = locationJpaRepository.findByStateOrCountry("Utah", "Utah");
+		
+		assertNotNull(locations);
+		assertEquals("Utah", locations.get(0).getState());
+	}
+	
 	@Test
 	public void testJpaFind() {
 		List<Location> locations = locationJpaRepository.findAll();
