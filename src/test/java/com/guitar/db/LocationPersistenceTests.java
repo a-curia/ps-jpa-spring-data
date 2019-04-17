@@ -103,7 +103,7 @@ public class LocationPersistenceTests {
 
 	@Test
 	public void testFindWithStartingWith() throws Exception {
-		List<Location> locs = locationJpaRepository.findByStateStartingWith("New"); // Query DSL
+		List<Location> locs = locationJpaRepository.findByStateIgnoreCaseStartingWith("new"); // Query DSL
 		assertEquals(4, locs.size());
 	}
 	
