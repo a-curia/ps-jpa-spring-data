@@ -2,6 +2,7 @@ package com.guitar.db;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 
 import java.util.List;
 
@@ -60,6 +61,12 @@ public class ModelTypePersistenceTests {
 		ModelType mt = modelTypeJpaRepository.findOne(1L);
 		assertEquals("Dreadnought Acoustic", mt.getName());
 	}
+	
+	@Test
+	public void testFindNullName() throws Exception {
+		List<ModelType> mt = modelTypeJpaRepository.findByNameIsNull();
+		assertNull(mt.get(0).getName());
+	}	
 	
 //	@Test
 //	@Transactional
