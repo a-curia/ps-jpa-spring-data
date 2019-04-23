@@ -59,7 +59,7 @@ public class LocationPersistenceTests {
 
 	@Test
 	public void testJpaFindByStateOrCountry() {
-		List<Location> locations = locationJpaRepository.findByStateOrCountry("Utah", "Utah");
+		List<Location> locations = locationJpaRepository.findFirstByStateOrCountry("Utah", "Utah");
 		
 		assertNotNull(locations);
 		assertEquals("Utah", locations.get(0).getState());

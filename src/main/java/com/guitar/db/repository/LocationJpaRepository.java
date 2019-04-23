@@ -15,7 +15,7 @@ public interface LocationJpaRepository extends JpaRepository<Location, Long> {
 	
 	List<Location> findByStateNotLikeOrderByStateAsc(String stateName);
 	
-	List<Location> findByStateOrCountry(String value, String value2);
+	List<Location> findFirstByStateOrCountry(String value, String value2);
 	List<Location> findByStateAndCountry(String value, String value2);
 	
 	List<Location> findByStateIsOrCountryEquals(String value, String value2);
